@@ -1,7 +1,10 @@
 import numpy as np
 
 def trapezoid(x_vals: np.ndarray, func: np.ufunc) -> float :
-    """ approximates the area between a curve and the x-axis over a given interval. """
+    """ approximates the area between a curve and the x-axis over a given interval
+    using trapezoids according to the riemann sum trapezoidal rule
+
+    takes a numpy array of x values and a corresponding function, returns a float"""
     a, b = x_vals[0], x_vals[-1]
     n = len(x_vals)
     delta_x = (b - a)/(n-1)
