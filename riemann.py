@@ -11,3 +11,12 @@ def trapezoid(x_vals: np.ndarray, func: np.ufunc) -> float :
     middle = func(x_vals[1:-1]) * 2
     area = (0.5 * delta_x) * ((func(x_vals[0])) + np.sum(middle) + func(x_vals[-1]))
     return area
+
+def left_endpoint (x_vals: np.ndarray, func: np.ufunc): 
+    a = x_vals[0]
+    b = x_vals[-1]
+    n = len(x_vals)
+    delta_x = (b-a)/(n-1)
+    left_endpoints = func(x_vals[ : -1])
+    left_sum = np.sum(left_endpoints * delta_x)
+    return left_sum
