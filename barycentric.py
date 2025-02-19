@@ -5,7 +5,7 @@ def get_barycentric_coordinates(triangle_coordinates: np.ndarray, point_coordina
     values for three points and a 1d array called point_coordinates that is in the
     form (x,y) of a point.
     Returns a 1d array with the corresponding barycentric coordinates """
-    coef = np.transpose(triangle_coordinates)
+    coef = triangle_coordinates
     coef = np.append(coef, [[1,1,1]], axis=0)
     answer = np.insert(point_coordinates, 2,[1])
     answer = np.transpose(answer)
@@ -30,4 +30,3 @@ def is_inside_triangle(triangle_coordinates: np.ndarray, point_coordinates: np.n
     coord = get_barycentric_coordinates(triangle_coordinates, point_coordinates)
     result = all(coord >= 0) and np.isclose(np.sum(coord), 1)
     return result
-    
