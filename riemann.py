@@ -20,3 +20,13 @@ def left_endpoint (x_vals: np.ndarray, func: np.ufunc):
     left_endpoints = func(x_vals[ : -1])
     left_sum = np.sum(left_endpoints * delta_x)
     return left_sum
+
+def simpson(x_vals: np.ndarray, func: np.ufunc): 
+    a = x_vals[0]
+    b = x_vals[-1]
+    outside = b-a/6
+    part1 = func(a)
+    part2 = 4*(func((a+b)/2))
+    part3 = func(b)
+    final_simpson = outside(part1 + part2 + part3)
+    return final_simpson
