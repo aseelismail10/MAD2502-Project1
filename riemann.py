@@ -24,9 +24,10 @@ def left_endpoint (x_vals: np.ndarray, func: np.ufunc):
 def simpson(x_vals: np.ndarray, func: np.ufunc): 
     a = x_vals[0]
     b = x_vals[-1]
-    outside = b-a/6
-    part1 = func(a)
-    part2 = 4*(func((a+b)/2))
-    part3 = func(b)
-    final_simpson = outside(part1 + part2 + part3)
+    outside = b-a/len(x_vals - 1)
+    y_vals = func(x_vals)
+    index_array = np.arange(len(y_vals))
+    equation = 4*((index_array % 2) + 2)
+    equation[1], equation[-1] = 1, 1
+    final_simpson = (outside/3) * (equation * y_vals).sum()
     return final_simpson
