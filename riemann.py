@@ -25,7 +25,7 @@ def simpson(x_vals: np.ndarray, func: np.ufunc):
     n = len(x_vals)
     a = x_vals[0]
     b = x_vals[-1]
-    h = b-a/n - 1
+    h = (b-a)/(n - 1)
     y_vals = func(x_vals)
     weights = np.arange(n)
     weights[1:-1:3] = 3
