@@ -22,12 +22,15 @@ def left_endpoint (x_vals: np.ndarray, func: np.ufunc):
     return left_sum
 
 def simpson(x_vals: np.ndarray, func: np.ufunc): 
+    n = len(x_vals)
     a = x_vals[0]
     b = x_vals[-1]
-    outside = b-a/len(x_vals - 1)
+    h = b-a/n - 1
     y_vals = func(x_vals)
-    index_array = np.arange(len(y_vals))
-    equation = 4*((index_array % 2) + 2)
-    equation[1], equation[-1] = 1, 1
-    final_simpson = (outside/3) * (equation * y_vals).sum()
+    weights = np.arange(len(n))
+    weights[1:-1:3] = 3
+    weights[2:-1:3] = 3
+    weights[3:-1:3] = 2
+    weights[0], weights[-1] = 1, 1
+    final_simpson = (3/8*h) * (np.sum(weights * y_vals))
     return final_simpson
