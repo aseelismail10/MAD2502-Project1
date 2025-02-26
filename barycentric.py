@@ -7,7 +7,9 @@ def get_barycentric_coordinates(triangle_coordinates: np.ndarray, point_coordina
     Returns a 1d array with the corresponding barycentric coordinates """
     coef = triangle_coordinates
     coef = np.concatenate((coef, [[1,1,1]]), axis=0)
+    # outside use of concatenate https://numpy.org/doc/stable/reference/generated/numpy.concatenate.html
     answer = np.insert(point_coordinates, 2,[1])
+    # don't know if we ever used insert, but https://numpy.org/doc/2.1/reference/generated/numpy.insert.html
     answer = np.transpose(answer)
     barycentric_coordinates = np.linalg.solve(coef, answer)
     return barycentric_coordinates
