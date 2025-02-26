@@ -13,7 +13,7 @@ def trapezoid(x_vals: np.ndarray, func: np.ufunc) -> float :
     return area
 
 def left_endpoint (x_vals: np.ndarray, func: np.ufunc): 
-     """ approximates the area between a curve and the x-axis over a given interval by dividing the 
+    """ approximates the area between a curve and the x-axis over a given interval by dividing the
     interval into smaller subintervals and using the left endpoint value of each subinterval for
     the height"""
     a = x_vals[0]
