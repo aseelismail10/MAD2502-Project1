@@ -22,6 +22,8 @@ def left_endpoint (x_vals: np.ndarray, func: np.ufunc):
     return left_sum
 
 def simpson(x_vals: np.ndarray, func: np.ufunc): 
+    """takes the x values and y values over a given interval and slices them to get the correct values 
+    to return the reimann simpson function"""
     n = len(x_vals)
     a = x_vals[0]
     b = x_vals[-1]
